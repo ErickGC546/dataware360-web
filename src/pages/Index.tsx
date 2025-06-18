@@ -1,4 +1,4 @@
-import { ArrowRight, Code, BarChart3, Shield, CheckCircle, Users, Zap, Mail, Instagram, Youtube, Linkedin } from "lucide-react";
+import { ArrowRight, Code, BarChart3, Shield, CheckCircle, Users, Zap, Mail, Instagram, Youtube, Linkedin, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -29,6 +29,7 @@ const Index = () => {
               <div className="ml-10 flex items-baseline space-x-8">
                 <a href="#servicios" className="text-gray-600 hover:text-blue-600 transition-colors">Servicios</a>
                 <a href="#precios" className="text-gray-600 hover:text-blue-600 transition-colors">Precios</a>
+                <a href="#testimonios" className="text-gray-600 hover:text-blue-600 transition-colors">Testimonios</a>
                 <a href="#blog" className="text-gray-600 hover:text-blue-600 transition-colors">Blog</a>
                 <a href="#contacto" className="text-gray-600 hover:text-blue-600 transition-colors">Contacto</a>
               </div>
@@ -276,8 +277,139 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section id="testimonios" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Lo que Dicen Nuestros Clientes
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Testimonios reales de startups que han transformado su negocio con nuestros servicios
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="relative bg-gradient-to-br from-blue-50 to-white border-blue-100">
+              <CardHeader>
+                <div className="flex items-center space-x-1 mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <CardDescription className="text-gray-700 text-base leading-relaxed">
+                  "DataWare360 transformó completamente nuestra startup. Su análisis de datos nos ayudó a identificar oportunidades que no veíamos antes. El ROI fue inmediato."
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                    <span className="text-white font-semibold">MC</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900">María Contreras</p>
+                    <p className="text-sm text-gray-600">CEO, TechStart Perú</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="relative bg-gradient-to-br from-purple-50 to-white border-purple-100">
+              <CardHeader>
+                <div className="flex items-center space-x-1 mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <CardDescription className="text-gray-700 text-base leading-relaxed">
+                  "El desarrollo de nuestra app fue impecable. Entregaron exactamente lo que necesitábamos y el soporte post-lanzamiento ha sido excepcional."
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
+                    <span className="text-white font-semibold">AR</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900">Andrés Rojas</p>
+                    <p className="text-sm text-gray-600">Fundador, EcoSolutions</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="relative bg-gradient-to-br from-green-50 to-white border-green-100">
+              <CardHeader>
+                <div className="flex items-center space-x-1 mb-2">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <CardDescription className="text-gray-700 text-base leading-relaxed">
+                  "Su consultoría en seguridad nos salvó de potenciales problemas graves. Ahora operamos con total confianza y nuestros datos están protegidos."
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <span className="text-white font-semibold">LM</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-gray-900">Luis Mendoza</p>
+                    <p className="text-sm text-gray-600">CTO, FinTech Lima</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Benefits Section */}
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                ¿Por Qué Elegir DataWare360?
+              </h3>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center p-6">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Zap className="h-6 w-6 text-blue-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Entrega Rápida</h4>
+                <p className="text-sm text-gray-600">Proyectos completados en tiempo récord sin comprometer la calidad</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-6 w-6 text-purple-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Equipo Experto</h4>
+                <p className="text-sm text-gray-600">Profesionales especializados en tecnologías de vanguardia</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Shield className="h-6 w-6 text-green-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Máxima Seguridad</h4>
+                <p className="text-sm text-gray-600">Protocolos de seguridad de nivel empresarial para tu tranquilidad</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="h-6 w-6 text-orange-600" />
+                </div>
+                <h4 className="font-semibold text-gray-900 mb-2">Soporte 24/7</h4>
+                <p className="text-sm text-gray-600">Acompañamiento continuo para el éxito de tu proyecto</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Blog Section */}
-      <section id="blog" className="py-20 bg-white">
+      <section id="blog" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -291,7 +423,11 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="group hover:shadow-lg transition-all duration-300">
               <CardHeader>
-                <div className="w-full h-48 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg mb-4"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=250&fit=crop" 
+                  alt="Emprendedora trabajando en startup" 
+                  className="w-full h-48 object-cover rounded-lg mb-4"
+                />
                 <Badge className="w-fit">Emprendimiento</Badge>
                 <CardTitle className="group-hover:text-blue-600 transition-colors">
                   5 Errores que Debes Evitar al Crear tu Startup Tech
@@ -307,7 +443,11 @@ const Index = () => {
 
             <Card className="group hover:shadow-lg transition-all duration-300">
               <CardHeader>
-                <div className="w-full h-48 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg mb-4"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop" 
+                  alt="Monitor mostrando análisis de datos" 
+                  className="w-full h-48 object-cover rounded-lg mb-4"
+                />
                 <Badge className="w-fit">Tecnología</Badge>
                 <CardTitle className="group-hover:text-blue-600 transition-colors">
                   El Futuro del Análisis de Datos en Pequeñas Empresas
@@ -323,7 +463,11 @@ const Index = () => {
 
             <Card className="group hover:shadow-lg transition-all duration-300">
               <CardHeader>
-                <div className="w-full h-48 bg-gradient-to-r from-purple-400 to-pink-500 rounded-lg mb-4"></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop" 
+                  alt="Laptop con código de seguridad" 
+                  className="w-full h-48 object-cover rounded-lg mb-4"
+                />
                 <Badge className="w-fit">Seguridad</Badge>
                 <CardTitle className="group-hover:text-blue-600 transition-colors">
                   Ciberseguridad para Startups: Guía Esencial
