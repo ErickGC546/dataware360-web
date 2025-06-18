@@ -676,9 +676,9 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4">Servicios</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Desarrollo de Software</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Análisis de Datos</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Consultoría Técnica</a></li>
+                <li><a href="#servicios" className="hover:text-white transition-colors">Desarrollo de Software</a></li>
+                <li><a href="#servicios" className="hover:text-white transition-colors">Análisis de Datos</a></li>
+                <li><a href="#servicios" className="hover:text-white transition-colors">Consultoría Técnica</a></li>
               </ul>
             </div>
             
@@ -686,9 +686,9 @@ const Index = () => {
               <h4 className="font-semibold mb-4">Empresa</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-white transition-colors">Sobre Nosotros</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contacto</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Casos de Éxito</a></li>
+                <li><a href="#blog" className="hover:text-white transition-colors">Blog</a></li>
+                <li><a href="#contacto" className="hover:text-white transition-colors">Contacto</a></li>
+                <li><a href="#testimonios" className="hover:text-white transition-colors">Casos de Éxito</a></li>
               </ul>
             </div>
           </div>
