@@ -54,8 +54,9 @@ const Index = () => {
               </span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Servicios modulares para impulsar tu startup. Desarrollo, análisis de datos y consultoría técnica 
-              diseñados especialmente para emprendedores jóvenes.
+              Servicios tecnológicos modulares para quienes quieren avanzar. Desde emprendedores hasta 
+              negocios en crecimiento, ofrecemos desarrollo de software, análisis de datos y consultoría técnica,
+              todo personalizado. Porque ningún proyecto es demasiado pequeño para transformarse con tecnología de verdad.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4">
@@ -634,7 +635,6 @@ const Index = () => {
 
                 <div className="text-center text-white/80 text-sm">
                   <p>⚡ Respuesta garantizada en menos de 24 horas</p>
-                  <p>📞 También puedes llamarnos al: +51 999 999 999</p>
                 </div>
               </form>
             </CardContent>
@@ -661,13 +661,13 @@ const Index = () => {
                 Impulsamos la transformación digital de startups y pequeñas empresas con soluciones tecnológicas modulares e innovadoras.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
+                <a href="https://www.instagram.com/data.ware360/" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
                   <Instagram className="h-5 w-5" />
                 </a>
-                <a href="#" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
+                <a href="www.linkedin.com/in/data-ware360-7a42b1370" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
                   <Linkedin className="h-5 w-5" />
                 </a>
-                <a href="#" className="p-2 bg-gray-800 rounded-lg hover:bg-red-600 transition-colors">
+                <a href="https://www.tiktok.com/@dataware360" className="p-2 bg-gray-800 rounded-lg hover:bg-red-600 transition-colors">
                   <Youtube className="h-5 w-5" />
                 </a>
               </div>
@@ -694,7 +694,7 @@ const Index = () => {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 DataWare360. Todos los derechos reservados.</p>
+            <p>&copy; 2025 DataWare360. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
