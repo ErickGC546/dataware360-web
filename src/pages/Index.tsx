@@ -1,4 +1,3 @@
-
 import { ArrowRight, Code, BarChart3, Shield, CheckCircle, Users, Zap, Mail, Instagram, Youtube, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,7 +14,12 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 flex items-center space-x-3">
+                <img 
+                  src="/lovable-uploads/ea99b6be-2edf-4756-8673-df1367dccf93.png" 
+                  alt="DataWare360 Logo" 
+                  className="w-8 h-8"
+                />
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                   DataWare360
                 </h1>
@@ -187,7 +191,7 @@ const Index = () => {
                 <CardTitle className="text-xl">Desarrollo</CardTitle>
                 <CardDescription>Para startups en crecimiento</CardDescription>
                 <div className="mt-4">
-                  <span className="text-3xl font-bold">$2,500</span>
+                  <span className="text-3xl font-bold">S/ 450</span>
                   <span className="text-gray-600">/proyecto</span>
                 </div>
               </CardHeader>
@@ -218,7 +222,7 @@ const Index = () => {
                 <CardTitle className="text-xl">Análisis de Datos</CardTitle>
                 <CardDescription>Insights que impulsan decisiones</CardDescription>
                 <div className="mt-4">
-                  <span className="text-3xl font-bold">$1,800</span>
+                  <span className="text-3xl font-bold">S/ 250</span>
                   <span className="text-gray-600">/mes</span>
                 </div>
               </CardHeader>
@@ -246,7 +250,7 @@ const Index = () => {
                 <CardTitle className="text-xl">Consultoría</CardTitle>
                 <CardDescription>Optimización experta</CardDescription>
                 <div className="mt-4">
-                  <span className="text-3xl font-bold">$150</span>
+                  <span className="text-3xl font-bold">S/ 200</span>
                   <span className="text-gray-600">/hora</span>
                 </div>
               </CardHeader>
@@ -401,9 +405,16 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="col-span-2">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-                DataWare360
-              </h3>
+              <div className="flex items-center space-x-3 mb-4">
+                <img 
+                  src="/lovable-uploads/ea99b6be-2edf-4756-8673-df1367dccf93.png" 
+                  alt="DataWare360 Logo" 
+                  className="w-8 h-8"
+                />
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  DataWare360
+                </h3>
+              </div>
               <p className="text-gray-400 mb-6">
                 Impulsamos la transformación digital de startups y pequeñas empresas con soluciones tecnológicas modulares e innovadoras.
               </p>
