@@ -1,9 +1,11 @@
+
 import { ArrowRight, Code, BarChart3, Shield, CheckCircle, Users, Zap, Mail, Instagram, Youtube, Linkedin, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -484,7 +486,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Contact Section - Enhanced */}
       <section id="contacto" className="py-20 bg-gradient-to-br from-blue-600 to-purple-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -496,48 +498,144 @@ const Index = () => {
             </p>
           </div>
           
-          <Card className="backdrop-blur-sm bg-white/10 border-white/20">
+          <Card className="backdrop-blur-sm bg-white/10 border-white/20 shadow-2xl">
             <CardContent className="p-8">
               <form className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-white mb-2">Nombre</label>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Nombre Completo <span className="text-red-300">*</span>
+                    </label>
                     <Input 
-                      className="bg-white/20 border-white/30 text-white placeholder-white/70" 
-                      placeholder="Tu nombre"
+                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50" 
+                      placeholder="Ingresa tu nombre completo"
+                      required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-white mb-2">Email</label>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Email Corporativo <span className="text-red-300">*</span>
+                    </label>
                     <Input 
                       type="email"
-                      className="bg-white/20 border-white/30 text-white placeholder-white/70" 
-                      placeholder="tu@email.com"
+                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50" 
+                      placeholder="tu@empresa.com"
+                      required
                     />
                   </div>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">Módulo de Interés</label>
-                  <select className="w-full px-3 py-2 bg-white/20 border border-white/30 rounded-md text-white">
-                    <option value="">Selecciona un módulo</option>
-                    <option value="desarrollo">Desarrollo de Software</option>
-                    <option value="datos">Análisis de Datos</option>
-                    <option value="consultoria">Consultoría Técnica</option>
-                    <option value="todos">Todos los módulos</option>
-                  </select>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Teléfono
+                    </label>
+                    <Input 
+                      type="tel"
+                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50" 
+                      placeholder="+51 999 999 999"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Empresa/Startup
+                    </label>
+                    <Input 
+                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50" 
+                      placeholder="Nombre de tu empresa"
+                    />
+                  </div>
                 </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">Mensaje</label>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Módulo de Interés <span className="text-red-300">*</span>
+                  </label>
+                  <Select>
+                    <SelectTrigger className="bg-white/20 border-white/30 text-white focus:bg-white/30 focus:border-white/50">
+                      <SelectValue placeholder="Selecciona el módulo que te interesa" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white border-gray-200">
+                      <SelectItem value="desarrollo">
+                        <div className="flex items-center space-x-2">
+                          <Code className="h-4 w-4 text-blue-600" />
+                          <span>Desarrollo de Software - S/ 450</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="datos">
+                        <div className="flex items-center space-x-2">
+                          <BarChart3 className="h-4 w-4 text-purple-600" />
+                          <span>Análisis de Datos - S/ 250/mes</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="consultoria">
+                        <div className="flex items-center space-x-2">
+                          <Shield className="h-4 w-4 text-green-600" />
+                          <span>Consultoría Técnica - S/ 200/hora</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="paquete-completo">
+                        <div className="flex items-center space-x-2">
+                          <CheckCircle className="h-4 w-4 text-orange-600" />
+                          <span>Paquete Completo - Cotización personalizada</span>
+                        </div>
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Presupuesto Aproximado
+                  </label>
+                  <Select>
+                    <SelectTrigger className="bg-white/20 border-white/30 text-white focus:bg-white/30 focus:border-white/50">
+                      <SelectValue placeholder="Selecciona tu rango de presupuesto" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white border-gray-200">
+                      <SelectItem value="500-1000">S/ 500 - S/ 1,000</SelectItem>
+                      <SelectItem value="1000-3000">S/ 1,000 - S/ 3,000</SelectItem>
+                      <SelectItem value="3000-5000">S/ 3,000 - S/ 5,000</SelectItem>
+                      <SelectItem value="5000+">Más de S/ 5,000</SelectItem>
+                      <SelectItem value="cotizar">Necesito cotización personalizada</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Cuéntanos sobre tu proyecto <span className="text-red-300">*</span>
+                  </label>
                   <Textarea 
-                    className="bg-white/20 border-white/30 text-white placeholder-white/70" 
-                    placeholder="Cuéntanos sobre tu proyecto..."
+                    className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50" 
+                    placeholder="Describe tu proyecto, objetivos, desafíos actuales y cómo podemos ayudarte..."
                     rows={4}
+                    required
                   />
                 </div>
-                <Button className="w-full bg-white text-blue-600 hover:bg-gray-100 font-semibold">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Enviar Mensaje
+
+                <div className="flex items-center space-x-2">
+                  <input 
+                    type="checkbox" 
+                    id="acepto-terminos" 
+                    className="w-4 h-4 text-blue-600 bg-white/20 border-white/30 rounded focus:ring-blue-500"
+                    required
+                  />
+                  <label htmlFor="acepto-terminos" className="text-sm text-white">
+                    Acepto los <span className="underline cursor-pointer">términos y condiciones</span> y 
+                    la <span className="underline cursor-pointer">política de privacidad</span>
+                  </label>
+                </div>
+
+                <Button className="w-full bg-white text-blue-600 hover:bg-gray-100 font-semibold py-3 text-lg transition-all duration-300 hover:shadow-lg">
+                  <Mail className="mr-2 h-5 w-5" />
+                  Enviar Solicitud de Cotización
                 </Button>
+
+                <div className="text-center text-white/80 text-sm">
+                  <p>⚡ Respuesta garantizada en menos de 24 horas</p>
+                  <p>📞 También puedes llamarnos al: +51 999 999 999</p>
+                </div>
               </form>
             </CardContent>
           </Card>
