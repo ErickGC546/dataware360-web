@@ -664,7 +664,7 @@ const Index = () => {
                 <a href="https://www.instagram.com/data.ware360/" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
                   <Instagram className="h-5 w-5" />
                 </a>
-                <a href="www.linkedin.com/in/data-ware360-7a42b1370" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
+                <a href="https://www.linkedin.com/in/data-ware360-7a42b1370/" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a href="https://www.tiktok.com/@dataware360" className="p-2 bg-gray-800 rounded-lg hover:bg-red-600 transition-colors">
