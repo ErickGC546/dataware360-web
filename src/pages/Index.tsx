@@ -1,16 +1,101 @@
 
-import { ArrowRight, Code, BarChart3, Shield, CheckCircle, Users, Zap, Mail, Instagram, Youtube, Linkedin, Star, Menu, X } from "lucide-react";
+import { ArrowRight, Code, BarChart3, Shield, CheckCircle, Users, Zap, Mail, Instagram, Youtube, Linkedin, Star, Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import heroBanner from "@/assets/hero-banner.jpg";
 
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+
+  const testimonials = [
+    {
+      id: 1,
+      text: "DataWare360 transformó completamente nuestra startup. Su análisis de datos nos ayudó a identificar oportunidades que no veíamos antes.",
+      author: "María Contreras",
+      role: "CEO, TechStart Perú",
+      initials: "MC",
+      color: "bg-blue-500",
+      bgColor: "from-blue-50 to-white",
+      borderColor: "border-blue-100"
+    },
+    {
+      id: 2,
+      text: "El desarrollo de nuestra app fue impecable. Entregaron exactamente lo que necesitábamos y el soporte post-lanzamiento ha sido excepcional.",
+      author: "Andrés Rojas",
+      role: "Fundador, EcoSolutions",
+      initials: "AR",
+      color: "bg-purple-500",
+      bgColor: "from-purple-50 to-white",
+      borderColor: "border-purple-100"
+    },
+    {
+      id: 3,
+      text: "Su consultoría en seguridad nos salvó de potenciales problemas graves. Ahora operamos con total confianza.",
+      author: "Luis Mendoza",
+      role: "CTO, FinTech Lima",
+      initials: "LM",
+      color: "bg-green-500",
+      bgColor: "from-green-50 to-white",
+      borderColor: "border-green-100"
+    },
+    {
+      id: 4,
+      text: "La implementación del dashboard de datos ha mejorado nuestro proceso de toma de decisiones en un 300%. Excelente trabajo.",
+      author: "Patricia González",
+      role: "Directora, Marketing Pro",
+      initials: "PG",
+      color: "bg-pink-500",
+      bgColor: "from-pink-50 to-white",
+      borderColor: "border-pink-100"
+    },
+    {
+      id: 5,
+      text: "Equipo profesional y responsable. Cumplieron todos los plazos y la calidad del código es excepcional. Los recomendamos al 100%.",
+      author: "Carlos Quintero",
+      role: "Tech Lead, StartupHub",
+      initials: "CQ",
+      color: "bg-yellow-500",
+      bgColor: "from-yellow-50 to-white",
+      borderColor: "border-yellow-100"
+    },
+    {
+      id: 6,
+      text: "Desde la estrategia inicial hasta la implementación final, DataWare360 fue nuestro socio confiable. Superaron todas nuestras expectativas.",
+      author: "Sofia Mendez",
+      role: "Emprendedora, InnovaLabs",
+      initials: "SM",
+      color: "bg-indigo-500",
+      bgColor: "from-indigo-50 to-white",
+      borderColor: "border-indigo-100"
+    }
+  ];
+
+  // Autoplay carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTestimonialIndex((prev) => (prev + 1) % (testimonials.length - 2));
+    }, 6000); // Cambiar cada 6 segundos
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
+  const handlePrev = () => {
+    setTestimonialIndex((prev) => 
+      prev === 0 ? testimonials.length - 3 : prev - 1
+    );
+  };
+
+  const handleNext = () => {
+    setTestimonialIndex((prev) => (prev + 1) % (testimonials.length - 2));
+  };
+
+  const visibleTestimonials = testimonials.slice(testimonialIndex, testimonialIndex + 3);
 
   return (
     <div className="min-h-screen bg-background">
@@ -43,9 +128,11 @@ const Index = () => {
             </div>
             
             <div className="flex items-center gap-2">
-              <Button className="hidden sm:flex bg-primary hover:bg-primary/90 text-sm">
-                Comenzar Ahora
-              </Button>
+              <a href="#contacto" className="hidden sm:flex">
+                <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-purple-700 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                  Comenzar Ahora
+                </Button>
+              </a>
               
               {/* Mobile menu button */}
               <button
@@ -66,9 +153,11 @@ const Index = () => {
                 <a href="#testimonios" className="text-foreground hover:text-primary transition-colors px-2 py-1" onClick={() => setMobileMenuOpen(false)}>Testimonios</a>
                 <a href="#blog" className="text-foreground hover:text-primary transition-colors px-2 py-1" onClick={() => setMobileMenuOpen(false)}>Blog</a>
                 <a href="#contacto" className="text-foreground hover:text-primary transition-colors px-2 py-1" onClick={() => setMobileMenuOpen(false)}>Contacto</a>
-                <Button className="w-full bg-primary hover:bg-primary/90 mt-2">
-                  Comenzar Ahora
-                </Button>
+                <a href="#contacto" onClick={() => setMobileMenuOpen(false)} className="w-full">
+                  <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-purple-700 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 mt-2">
+                    Comenzar Ahora
+                  </Button>
+                </a>
               </div>
             </div>
           )}
@@ -98,11 +187,13 @@ const Index = () => {
               Desarrollo, datos y consultoría tecnológica para startups y negocios en crecimiento.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto">
-                Comienza tu transformación
-                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-              </Button>
-              <Button variant="outline" size="lg" className="text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 bg-white/10 border-white/30 text-white hover:bg-white/20 w-full sm:w-auto">
+              <a href="#contacto" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-purple-700 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 font-semibold shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                  Comienza tu transformación
+                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+                </Button>
+              </a>
+              <Button variant="outline" size="lg" className="text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 bg-white/10 border-white/30 text-white hover:bg-white/30 hover:border-white/70 hover:shadow-lg transition-all duration-300 hover:scale-105 w-full sm:w-auto font-semibold">
                 Ver Demo
               </Button>
             </div>
@@ -285,7 +376,7 @@ const Index = () => {
                     Soporte 24/7
                   </li>
                 </ul>
-                <Button className="w-full mt-4 sm:mt-6 bg-primary hover:bg-primary/90 text-sm">Empezar Ahora</Button>
+                <Button className="w-full mt-4 sm:mt-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-purple-700 text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">Empezar Ahora</Button>
               </CardContent>
             </Card>
 
@@ -333,77 +424,68 @@ const Index = () => {
           </div>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <Card className="relative bg-gradient-to-br from-blue-50 to-white border-blue-100">
-              <CardHeader>
-                <div className="flex items-center space-x-1 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <CardDescription className="text-foreground/80 text-sm sm:text-base leading-relaxed">
-                  "DataWare360 transformó completamente nuestra startup. Su análisis de datos nos ayudó a identificar oportunidades que no veíamos antes."
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-semibold text-xs sm:text-sm">MC</span>
+            {visibleTestimonials.map((testimonial) => (
+              <Card 
+                key={testimonial.id}
+                className={`relative bg-gradient-to-br ${testimonial.bgColor} ${testimonial.borderColor} transition-all duration-500 ease-in-out`}
+              >
+                <CardHeader>
+                  <div className="flex items-center space-x-1 mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
                   </div>
-                  <div>
-                    <p className="font-semibold text-foreground text-sm sm:text-base">María Contreras</p>
-                    <p className="text-xs sm:text-sm text-muted-foreground">CEO, TechStart Perú</p>
+                  <CardDescription className="text-foreground/80 text-sm sm:text-base leading-relaxed">
+                    "{testimonial.text}"
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center space-x-3">
+                    <div className={`w-8 h-8 sm:w-10 sm:h-10 ${testimonial.color} rounded-full flex items-center justify-center flex-shrink-0`}>
+                      <span className="text-white font-semibold text-xs sm:text-sm">{testimonial.initials}</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-foreground text-sm sm:text-base">{testimonial.author}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">{testimonial.role}</p>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
 
-            <Card className="relative bg-gradient-to-br from-purple-50 to-white border-purple-100">
-              <CardHeader>
-                <div className="flex items-center space-x-1 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <CardDescription className="text-foreground/80 text-sm sm:text-base leading-relaxed">
-                  "El desarrollo de nuestra app fue impecable. Entregaron exactamente lo que necesitábamos y el soporte post-lanzamiento ha sido excepcional."
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-semibold text-xs sm:text-sm">AR</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground text-sm sm:text-base">Andrés Rojas</p>
-                    <p className="text-xs sm:text-sm text-muted-foreground">Fundador, EcoSolutions</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          {/* Carousel Controls */}
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-10">
+            <button
+              onClick={handlePrev}
+              className="p-2 sm:p-3 rounded-full bg-primary hover:bg-primary/90 text-white transition-colors"
+              aria-label="Testimonio anterior"
+            >
+              <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
+            </button>
 
-            <Card className="relative bg-gradient-to-br from-green-50 to-white border-green-100 sm:col-span-2 lg:col-span-1">
-              <CardHeader>
-                <div className="flex items-center space-x-1 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <CardDescription className="text-foreground/80 text-sm sm:text-base leading-relaxed">
-                  "Su consultoría en seguridad nos salvó de potenciales problemas graves. Ahora operamos con total confianza."
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-semibold text-xs sm:text-sm">LM</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground text-sm sm:text-base">Luis Mendoza</p>
-                    <p className="text-xs sm:text-sm text-muted-foreground">CTO, FinTech Lima</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <div className="flex gap-2">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setTestimonialIndex(Math.min(index, testimonials.length - 3))}
+                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
+                    index >= testimonialIndex && index < testimonialIndex + 3
+                      ? "bg-primary w-6 sm:w-8"
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                  aria-label={`Ir al grupo de testimonios ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={handleNext}
+              className="p-2 sm:p-3 rounded-full bg-primary hover:bg-primary/90 text-white transition-colors"
+              aria-label="Siguiente testimonio"
+            >
+              <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
+            </button>
           </div>
 
           {/* Benefits Section */}
@@ -528,7 +610,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contacto" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-600 to-purple-700">
+      <section id="contacto" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
@@ -539,27 +621,27 @@ const Index = () => {
             </p>
           </div>
           
-          <Card className="backdrop-blur-sm bg-white/10 border-white/20 shadow-2xl">
+          <Card className="backdrop-blur-md bg-blue-500/40 border-blue-300/30 shadow-2xl">
             <CardContent className="p-4 sm:p-6 md:p-8">
               <form className="space-y-4 sm:space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-xs sm:text-sm font-medium text-white mb-1 sm:mb-2">
-                      Nombre Completo <span className="text-red-300">*</span>
+                      Nombre Completo <span>*</span>
                     </label>
                     <Input 
-                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50 text-sm" 
+                      className="bg-white/15 border-white/40 text-white placeholder-white/60 focus:bg-white/25 focus:border-white/60 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 transition-all" 
                       placeholder="Ingresa tu nombre completo"
                       required
                     />
                   </div>
                   <div>
                     <label className="block text-xs sm:text-sm font-medium text-white mb-1 sm:mb-2">
-                      Email Corporativo <span className="text-red-300">*</span>
+                      Email Corporativo <span>*</span>
                     </label>
                     <Input 
                       type="email"
-                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50 text-sm" 
+                      className="bg-white/15 border-white/40 text-white placeholder-white/60 focus:bg-white/25 focus:border-white/60 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 transition-all" 
                       placeholder="tu@empresa.com"
                       required
                     />
@@ -573,7 +655,7 @@ const Index = () => {
                     </label>
                     <Input 
                       type="tel"
-                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50 text-sm" 
+                      className="bg-white/15 border-white/40 text-white placeholder-white/60 focus:bg-white/25 focus:border-white/60 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 transition-all" 
                       placeholder="+51 999 999 999"
                     />
                   </div>
@@ -582,7 +664,7 @@ const Index = () => {
                       Empresa/Startup
                     </label>
                     <Input 
-                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50 text-sm" 
+                      className="bg-white/15 border-white/40 text-white placeholder-white/60 focus:bg-white/25 focus:border-white/60 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 transition-all" 
                       placeholder="Nombre de tu empresa"
                     />
                   </div>
@@ -593,7 +675,7 @@ const Index = () => {
                     Módulo de Interés <span className="text-red-300">*</span>
                   </label>
                   <Select>
-                    <SelectTrigger className="bg-white/20 border-white/30 text-white focus:bg-white/30 focus:border-white/50 text-sm">
+                    <SelectTrigger className="bg-white/15 border-white/40 text-white focus:bg-white/25 focus:border-white/60 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 transition-all">
                       <SelectValue placeholder="Selecciona el módulo que te interesa" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border-gray-200">
@@ -630,7 +712,7 @@ const Index = () => {
                     Presupuesto Aproximado
                   </label>
                   <Select>
-                    <SelectTrigger className="bg-white/20 border-white/30 text-white focus:bg-white/30 focus:border-white/50 text-sm">
+                    <SelectTrigger className="bg-white/15 border-white/40 text-white focus:bg-white/25 focus:border-white/60 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 transition-all">
                       <SelectValue placeholder="Selecciona tu rango de presupuesto" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border-gray-200">
@@ -648,7 +730,7 @@ const Index = () => {
                     Cuéntanos sobre tu proyecto <span className="text-red-300">*</span>
                   </label>
                   <Textarea 
-                    className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50 text-sm" 
+                    className="bg-white/15 border-white/40 text-white placeholder-white/60 focus:bg-white/25 focus:border-white/60 text-sm focus:outline-none focus:ring-2 focus:ring-white/30 transition-all" 
                     placeholder="Describe tu proyecto, objetivos y cómo podemos ayudarte..."
                     rows={4}
                     required
@@ -668,7 +750,7 @@ const Index = () => {
                   </label>
                 </div>
 
-                <Button className="w-full bg-white text-blue-600 hover:bg-gray-100 font-semibold py-2.5 sm:py-3 text-sm sm:text-base md:text-lg transition-all duration-300 hover:shadow-lg">
+                <Button className="w-full bg-white text-blue-600 hover:bg-blue-50 hover:text-blue-700 font-semibold py-2.5 sm:py-3 text-sm sm:text-base md:text-lg transition-all duration-300 hover:shadow-xl hover:scale-105 shadow-lg">
                   <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                   Enviar Solicitud
                 </Button>
