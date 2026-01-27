@@ -1,173 +1,213 @@
 
-import { ArrowRight, Code, BarChart3, Shield, CheckCircle, Users, Zap, Mail, Instagram, Youtube, Linkedin, Star } from "lucide-react";
+import { ArrowRight, Code, BarChart3, Shield, CheckCircle, Users, Zap, Mail, Instagram, Youtube, Linkedin, Star, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import heroBanner from "@/assets/hero-banner.jpg";
 
 const Index = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-slate-50">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
+      <nav className="border-b bg-background/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center space-x-3">
+              <div className="flex-shrink-0 flex items-center space-x-2 sm:space-x-3">
                 <img 
                   src="/lovable-uploads/ea99b6be-2edf-4756-8673-df1367dccf93.png" 
                   alt="DataWare360 Logo" 
-                  className="w-8 h-8"
+                  className="w-7 h-7 sm:w-8 sm:h-8"
                 />
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
+                <h1 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
                   DataWare360
                 </h1>
               </div>
             </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                <a href="#servicios" className="text-gray-600 hover:text-blue-600 transition-colors">Servicios</a>
-                <a href="#precios" className="text-gray-600 hover:text-blue-600 transition-colors">Precios</a>
-                <a href="#testimonios" className="text-gray-600 hover:text-blue-600 transition-colors">Testimonios</a>
-                <a href="#blog" className="text-gray-600 hover:text-blue-600 transition-colors">Blog</a>
-                <a href="#contacto" className="text-gray-600 hover:text-blue-600 transition-colors">Contacto</a>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden lg:block">
+              <div className="ml-10 flex items-baseline space-x-6 xl:space-x-8">
+                <a href="#servicios" className="text-muted-foreground hover:text-primary transition-colors text-sm xl:text-base">Servicios</a>
+                <a href="#precios" className="text-muted-foreground hover:text-primary transition-colors text-sm xl:text-base">Precios</a>
+                <a href="#testimonios" className="text-muted-foreground hover:text-primary transition-colors text-sm xl:text-base">Testimonios</a>
+                <a href="#blog" className="text-muted-foreground hover:text-primary transition-colors text-sm xl:text-base">Blog</a>
+                <a href="#contacto" className="text-muted-foreground hover:text-primary transition-colors text-sm xl:text-base">Contacto</a>
               </div>
             </div>
-            <Button className="bg-blue-600 hover:bg-blue-700">
-              Comenzar Ahora
-            </Button>
+            
+            <div className="flex items-center gap-2">
+              <Button className="hidden sm:flex bg-primary hover:bg-primary/90 text-sm">
+                Comenzar Ahora
+              </Button>
+              
+              {/* Mobile menu button */}
+              <button
+                className="lg:hidden p-2 rounded-md text-foreground hover:bg-accent"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
+          
+          {/* Mobile Navigation */}
+          {mobileMenuOpen && (
+            <div className="lg:hidden py-4 border-t">
+              <div className="flex flex-col space-y-4">
+                <a href="#servicios" className="text-foreground hover:text-primary transition-colors px-2 py-1" onClick={() => setMobileMenuOpen(false)}>Servicios</a>
+                <a href="#precios" className="text-foreground hover:text-primary transition-colors px-2 py-1" onClick={() => setMobileMenuOpen(false)}>Precios</a>
+                <a href="#testimonios" className="text-foreground hover:text-primary transition-colors px-2 py-1" onClick={() => setMobileMenuOpen(false)}>Testimonios</a>
+                <a href="#blog" className="text-foreground hover:text-primary transition-colors px-2 py-1" onClick={() => setMobileMenuOpen(false)}>Blog</a>
+                <a href="#contacto" className="text-foreground hover:text-primary transition-colors px-2 py-1" onClick={() => setMobileMenuOpen(false)}>Contacto</a>
+                <Button className="w-full bg-primary hover:bg-primary/90 mt-2">
+                  Comenzar Ahora
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      {/* Hero Section - Improved with background image */}
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBanner})` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight">
               <span className="block">Tú eliges,</span>
-              <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 nosotros lo hacemos
               </span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Servicios tecnológicos modulares para quienes quieren avanzar. Desde emprendedores hasta 
-              negocios en crecimiento, ofrecemos desarrollo de software, análisis de datos y consultoría técnica,
-              todo personalizado. Porque ningún proyecto es demasiado pequeño para transformarse con tecnología de verdad.
+            <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
+              Desarrollo, datos y consultoría tecnológica para startups y negocios en crecimiento.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4">
-                Comienza tu transformación digital hoy
-                <ArrowRight className="ml-2 h-5 w-5" />
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto">
+                Comienza tu transformación
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-4">
+              <Button variant="outline" size="lg" className="text-sm sm:text-base md:text-lg px-6 sm:px-8 py-3 sm:py-4 bg-white/10 border-white/30 text-white hover:bg-white/20 w-full sm:w-auto">
                 Ver Demo
               </Button>
             </div>
           </div>
         </div>
         
-        {/* Background decoration */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
+        {/* Scroll indicator */}
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-pulse" />
+          </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="servicios" className="py-20 bg-white">
+      <section id="servicios" className="py-12 sm:py-16 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
               Nuestros Módulos
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
               Soluciones tecnológicas modulares diseñadas para impulsar tu negocio
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-blue-200">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30">
               <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-200 transition-colors">
-                  <Code className="h-6 w-6 text-blue-600" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-blue-200 transition-colors">
+                  <Code className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                 </div>
-                <CardTitle className="text-xl font-bold">Desarrollo de Software</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-lg sm:text-xl font-bold">Desarrollo de Software</CardTitle>
+                <CardDescription className="text-sm sm:text-base">
                   Aplicaciones web y móviles personalizadas para startups y pequeñas empresas
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm text-gray-600">
+                <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                     Desarrollo web y móvil
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                     APIs y integraciones
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                     Mantenimiento continuo
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-blue-200">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30">
               <CardHeader>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-colors">
-                  <BarChart3 className="h-6 w-6 text-purple-600" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-purple-200 transition-colors">
+                  <BarChart3 className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" />
                 </div>
-                <CardTitle className="text-xl font-bold">Análisis de Datos</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-lg sm:text-xl font-bold">Análisis de Datos</CardTitle>
+                <CardDescription className="text-sm sm:text-base">
                   Transformamos tus datos en insights accionables para impulsar tu crecimiento
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm text-gray-600">
+                <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                     Dashboards interactivos
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                     Análisis predictivo
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                     Reportes automatizados
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-blue-200">
+            <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30 sm:col-span-2 lg:col-span-1">
               <CardHeader>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-200 transition-colors">
-                  <Shield className="h-6 w-6 text-green-600" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center mb-3 sm:mb-4 group-hover:bg-green-200 transition-colors">
+                  <Shield className="h-5 w-5 sm:h-6 sm:w-6 text-green-600" />
                 </div>
-                <CardTitle className="text-xl font-bold">Consultoría Técnica</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-lg sm:text-xl font-bold">Consultoría Técnica</CardTitle>
+                <CardDescription className="text-sm sm:text-base">
                   Optimización de seguridad y rendimiento para tu infraestructura tecnológica
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 text-sm text-gray-600">
+                <ul className="space-y-2 text-xs sm:text-sm text-muted-foreground">
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                     Auditorías de seguridad
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                     Optimización de rendimiento
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-green-500 mr-2 flex-shrink-0" />
                     Arquitectura escalable
                   </li>
                 </ul>
@@ -178,102 +218,102 @@ const Index = () => {
       </section>
 
       {/* Pricing Section */}
-      <section id="precios" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+      <section id="precios" className="py-12 sm:py-16 md:py-20 bg-secondary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
               Precios Transparentes
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
               Elige el módulo que necesitas, sin compromisos a largo plazo
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <Card className="relative">
               <CardHeader>
-                <CardTitle className="text-xl">Desarrollo</CardTitle>
+                <CardTitle className="text-lg sm:text-xl">Desarrollo</CardTitle>
                 <CardDescription>Para startups en crecimiento</CardDescription>
-                <div className="mt-4">
-                  <span className="text-3xl font-bold">S/ 450</span>
-                  <span className="text-gray-600">/proyecto</span>
+                <div className="mt-3 sm:mt-4">
+                  <span className="text-2xl sm:text-3xl font-bold">S/ 450</span>
+                  <span className="text-muted-foreground text-sm sm:text-base">/proyecto</span>
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3 text-sm">
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                     App web o móvil
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                     3 meses de soporte
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                     Código fuente incluido
                   </li>
                 </ul>
-                <Button className="w-full mt-6">Solicitar Cotización</Button>
+                <Button className="w-full mt-4 sm:mt-6 text-sm">Solicitar Cotización</Button>
               </CardContent>
             </Card>
 
-            <Card className="relative border-2 border-blue-500 shadow-lg">
+            <Card className="relative border-2 border-primary shadow-lg">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <Badge className="bg-blue-500">Más Popular</Badge>
+                <Badge className="bg-primary text-xs sm:text-sm">Más Popular</Badge>
               </div>
               <CardHeader>
-                <CardTitle className="text-xl">Análisis de Datos</CardTitle>
+                <CardTitle className="text-lg sm:text-xl">Análisis de Datos</CardTitle>
                 <CardDescription>Insights que impulsan decisiones</CardDescription>
-                <div className="mt-4">
-                  <span className="text-3xl font-bold">S/ 250</span>
-                  <span className="text-gray-600">/mes</span>
+                <div className="mt-3 sm:mt-4">
+                  <span className="text-2xl sm:text-3xl font-bold">S/ 250</span>
+                  <span className="text-muted-foreground text-sm sm:text-base">/mes</span>
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3 text-sm">
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                     Dashboard personalizado
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                     Reportes automatizados
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                     Soporte 24/7
                   </li>
                 </ul>
-                <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700">Empezar Ahora</Button>
+                <Button className="w-full mt-4 sm:mt-6 bg-primary hover:bg-primary/90 text-sm">Empezar Ahora</Button>
               </CardContent>
             </Card>
 
-            <Card className="relative">
+            <Card className="relative sm:col-span-2 lg:col-span-1">
               <CardHeader>
-                <CardTitle className="text-xl">Consultoría</CardTitle>
+                <CardTitle className="text-lg sm:text-xl">Consultoría</CardTitle>
                 <CardDescription>Optimización experta</CardDescription>
-                <div className="mt-4">
-                  <span className="text-3xl font-bold">S/ 200</span>
-                  <span className="text-gray-600">/hora</span>
+                <div className="mt-3 sm:mt-4">
+                  <span className="text-2xl sm:text-3xl font-bold">S/ 200</span>
+                  <span className="text-muted-foreground text-sm sm:text-base">/hora</span>
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3 text-sm">
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                     Auditoría completa
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                     Plan de mejoras
                   </li>
                   <li className="flex items-center">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-2" />
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
                     Seguimiento mensual
                   </li>
                 </ul>
-                <Button variant="outline" className="w-full mt-6">Agendar Consulta</Button>
+                <Button variant="outline" className="w-full mt-4 sm:mt-6 text-sm">Agendar Consulta</Button>
               </CardContent>
             </Card>
           </div>
@@ -281,37 +321,37 @@ const Index = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonios" className="py-20 bg-white">
+      <section id="testimonios" className="py-12 sm:py-16 md:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
               Lo que Dicen Nuestros Clientes
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Testimonios reales de startups que han transformado su negocio con nuestros servicios
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+              Testimonios reales de startups que han transformado su negocio
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <Card className="relative bg-gradient-to-br from-blue-50 to-white border-blue-100">
               <CardHeader>
                 <div className="flex items-center space-x-1 mb-2">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <CardDescription className="text-gray-700 text-base leading-relaxed">
-                  "DataWare360 transformó completamente nuestra startup. Su análisis de datos nos ayudó a identificar oportunidades que no veíamos antes. El ROI fue inmediato."
+                <CardDescription className="text-foreground/80 text-sm sm:text-base leading-relaxed">
+                  "DataWare360 transformó completamente nuestra startup. Su análisis de datos nos ayudó a identificar oportunidades que no veíamos antes."
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-                    <span className="text-white font-semibold">MC</span>
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-semibold text-xs sm:text-sm">MC</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">María Contreras</p>
-                    <p className="text-sm text-gray-600">CEO, TechStart Perú</p>
+                    <p className="font-semibold text-foreground text-sm sm:text-base">María Contreras</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">CEO, TechStart Perú</p>
                   </div>
                 </div>
               </CardContent>
@@ -321,45 +361,45 @@ const Index = () => {
               <CardHeader>
                 <div className="flex items-center space-x-1 mb-2">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <CardDescription className="text-gray-700 text-base leading-relaxed">
+                <CardDescription className="text-foreground/80 text-sm sm:text-base leading-relaxed">
                   "El desarrollo de nuestra app fue impecable. Entregaron exactamente lo que necesitábamos y el soporte post-lanzamiento ha sido excepcional."
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
-                    <span className="text-white font-semibold">AR</span>
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-semibold text-xs sm:text-sm">AR</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Andrés Rojas</p>
-                    <p className="text-sm text-gray-600">Fundador, EcoSolutions</p>
+                    <p className="font-semibold text-foreground text-sm sm:text-base">Andrés Rojas</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Fundador, EcoSolutions</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="relative bg-gradient-to-br from-green-50 to-white border-green-100">
+            <Card className="relative bg-gradient-to-br from-green-50 to-white border-green-100 sm:col-span-2 lg:col-span-1">
               <CardHeader>
                 <div className="flex items-center space-x-1 mb-2">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-3 w-3 sm:h-4 sm:w-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <CardDescription className="text-gray-700 text-base leading-relaxed">
-                  "Su consultoría en seguridad nos salvó de potenciales problemas graves. Ahora operamos con total confianza y nuestros datos están protegidos."
+                <CardDescription className="text-foreground/80 text-sm sm:text-base leading-relaxed">
+                  "Su consultoría en seguridad nos salvó de potenciales problemas graves. Ahora operamos con total confianza."
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                    <span className="text-white font-semibold">LM</span>
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-semibold text-xs sm:text-sm">LM</span>
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">Luis Mendoza</p>
-                    <p className="text-sm text-gray-600">CTO, FinTech Lima</p>
+                    <p className="font-semibold text-foreground text-sm sm:text-base">Luis Mendoza</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">CTO, FinTech Lima</p>
                   </div>
                 </div>
               </CardContent>
@@ -367,44 +407,44 @@ const Index = () => {
           </div>
 
           {/* Benefits Section */}
-          <div className="mt-20">
-            <div className="text-center mb-12">
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          <div className="mt-12 sm:mt-16 md:mt-20">
+            <div className="text-center mb-8 sm:mb-12">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-3 sm:mb-4">
                 ¿Por Qué Elegir DataWare360?
               </h3>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center p-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Zap className="h-6 w-6 text-blue-600" />
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              <div className="text-center p-4 sm:p-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Entrega Rápida</h4>
-                <p className="text-sm text-gray-600">Proyectos completados en tiempo récord sin comprometer la calidad</p>
+                <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">Entrega Rápida</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">Proyectos completados en tiempo récord</p>
               </div>
               
-              <div className="text-center p-6">
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-6 w-6 text-purple-600" />
+              <div className="text-center p-4 sm:p-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <Users className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Equipo Experto</h4>
-                <p className="text-sm text-gray-600">Profesionales especializados en tecnologías de vanguardia</p>
+                <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">Equipo Experto</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">Profesionales especializados</p>
               </div>
               
-              <div className="text-center p-6">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Shield className="h-6 w-6 text-green-600" />
+              <div className="text-center p-4 sm:p-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <Shield className="h-5 w-5 sm:h-6 sm:w-6 text-green-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Máxima Seguridad</h4>
-                <p className="text-sm text-gray-600">Protocolos de seguridad de nivel empresarial para tu tranquilidad</p>
+                <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">Máxima Seguridad</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">Protocolos de nivel empresarial</p>
               </div>
               
-              <div className="text-center p-6">
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="h-6 w-6 text-orange-600" />
+              <div className="text-center p-4 sm:p-6">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-orange-600" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Soporte 24/7</h4>
-                <p className="text-sm text-gray-600">Acompañamiento continuo para el éxito de tu proyecto</p>
+                <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">Soporte 24/7</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">Acompañamiento continuo</p>
               </div>
             </div>
           </div>
@@ -412,35 +452,35 @@ const Index = () => {
       </section>
 
       {/* Blog Section */}
-      <section id="blog" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+      <section id="blog" className="py-12 sm:py-16 md:py-20 bg-secondary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
               Blog de Tecnología
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground px-4">
               Insights, tendencias y consejos para emprendedores tech
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <Card className="group hover:shadow-lg transition-all duration-300">
               <CardHeader>
                 <img 
                   src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=250&fit=crop" 
                   alt="Emprendedora trabajando en startup" 
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  className="w-full h-36 sm:h-48 object-cover rounded-lg mb-3 sm:mb-4"
                 />
-                <Badge className="w-fit">Emprendimiento</Badge>
-                <CardTitle className="group-hover:text-blue-600 transition-colors">
+                <Badge className="w-fit text-xs">Emprendimiento</Badge>
+                <CardTitle className="group-hover:text-primary transition-colors text-base sm:text-lg">
                   5 Errores que Debes Evitar al Crear tu Startup Tech
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-xs sm:text-sm">
                   Aprende de los errores más comunes que cometen los emprendedores y cómo evitarlos...
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-500">Publicado el 15 de Junio, 2024</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">Publicado el 15 de Junio, 2024</p>
               </CardContent>
             </Card>
 
@@ -449,136 +489,136 @@ const Index = () => {
                 <img 
                   src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop" 
                   alt="Monitor mostrando análisis de datos" 
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  className="w-full h-36 sm:h-48 object-cover rounded-lg mb-3 sm:mb-4"
                 />
-                <Badge className="w-fit">Tecnología</Badge>
-                <CardTitle className="group-hover:text-blue-600 transition-colors">
+                <Badge className="w-fit text-xs">Tecnología</Badge>
+                <CardTitle className="group-hover:text-primary transition-colors text-base sm:text-lg">
                   El Futuro del Análisis de Datos en Pequeñas Empresas
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-xs sm:text-sm">
                   Descubre cómo las herramientas de análisis están democratizando el acceso a insights...
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-500">Publicado el 10 de Junio, 2024</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">Publicado el 10 de Junio, 2024</p>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-lg transition-all duration-300">
+            <Card className="group hover:shadow-lg transition-all duration-300 sm:col-span-2 lg:col-span-1">
               <CardHeader>
                 <img 
                   src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop" 
                   alt="Laptop con código de seguridad" 
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  className="w-full h-36 sm:h-48 object-cover rounded-lg mb-3 sm:mb-4"
                 />
-                <Badge className="w-fit">Seguridad</Badge>
-                <CardTitle className="group-hover:text-blue-600 transition-colors">
+                <Badge className="w-fit text-xs">Seguridad</Badge>
+                <CardTitle className="group-hover:text-primary transition-colors text-base sm:text-lg">
                   Ciberseguridad para Startups: Guía Esencial
                 </CardTitle>
-                <CardDescription>
+                <CardDescription className="text-xs sm:text-sm">
                   Protege tu startup desde el día uno con estas mejores prácticas de seguridad...
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-gray-500">Publicado el 5 de Junio, 2024</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">Publicado el 5 de Junio, 2024</p>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Contact Section - Enhanced */}
-      <section id="contacto" className="py-20 bg-gradient-to-br from-blue-600 to-purple-700">
+      {/* Contact Section */}
+      <section id="contacto" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-600 to-purple-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4">
               ¿Listo para Comenzar?
             </h2>
-            <p className="text-xl text-blue-100">
+            <p className="text-base sm:text-lg md:text-xl text-blue-100 px-4">
               Contáctanos para una asesoría personalizada y gratuita
             </p>
           </div>
           
           <Card className="backdrop-blur-sm bg-white/10 border-white/20 shadow-2xl">
-            <CardContent className="p-8">
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+            <CardContent className="p-4 sm:p-6 md:p-8">
+              <form className="space-y-4 sm:space-y-6">
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-white mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-white mb-1 sm:mb-2">
                       Nombre Completo <span className="text-red-300">*</span>
                     </label>
                     <Input 
-                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50" 
+                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50 text-sm" 
                       placeholder="Ingresa tu nombre completo"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-white mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-white mb-1 sm:mb-2">
                       Email Corporativo <span className="text-red-300">*</span>
                     </label>
                     <Input 
                       type="email"
-                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50" 
+                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50 text-sm" 
                       placeholder="tu@empresa.com"
                       required
                     />
                   </div>
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-white mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-white mb-1 sm:mb-2">
                       Teléfono
                     </label>
                     <Input 
                       type="tel"
-                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50" 
+                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50 text-sm" 
                       placeholder="+51 999 999 999"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-white mb-2">
+                    <label className="block text-xs sm:text-sm font-medium text-white mb-1 sm:mb-2">
                       Empresa/Startup
                     </label>
                     <Input 
-                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50" 
+                      className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50 text-sm" 
                       placeholder="Nombre de tu empresa"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-white mb-1 sm:mb-2">
                     Módulo de Interés <span className="text-red-300">*</span>
                   </label>
                   <Select>
-                    <SelectTrigger className="bg-white/20 border-white/30 text-white focus:bg-white/30 focus:border-white/50">
+                    <SelectTrigger className="bg-white/20 border-white/30 text-white focus:bg-white/30 focus:border-white/50 text-sm">
                       <SelectValue placeholder="Selecciona el módulo que te interesa" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border-gray-200">
                       <SelectItem value="desarrollo">
                         <div className="flex items-center space-x-2">
                           <Code className="h-4 w-4 text-blue-600" />
-                          <span>Desarrollo de Software - S/ 450</span>
+                          <span className="text-sm">Desarrollo de Software - S/ 450</span>
                         </div>
                       </SelectItem>
                       <SelectItem value="datos">
                         <div className="flex items-center space-x-2">
                           <BarChart3 className="h-4 w-4 text-purple-600" />
-                          <span>Análisis de Datos - S/ 250/mes</span>
+                          <span className="text-sm">Análisis de Datos - S/ 250/mes</span>
                         </div>
                       </SelectItem>
                       <SelectItem value="consultoria">
                         <div className="flex items-center space-x-2">
                           <Shield className="h-4 w-4 text-green-600" />
-                          <span>Consultoría Técnica - S/ 200/hora</span>
+                          <span className="text-sm">Consultoría Técnica - S/ 200/hora</span>
                         </div>
                       </SelectItem>
                       <SelectItem value="paquete-completo">
                         <div className="flex items-center space-x-2">
                           <CheckCircle className="h-4 w-4 text-orange-600" />
-                          <span>Paquete Completo - Cotización personalizada</span>
+                          <span className="text-sm">Paquete Completo</span>
                         </div>
                       </SelectItem>
                     </SelectContent>
@@ -586,11 +626,11 @@ const Index = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-white mb-1 sm:mb-2">
                     Presupuesto Aproximado
                   </label>
                   <Select>
-                    <SelectTrigger className="bg-white/20 border-white/30 text-white focus:bg-white/30 focus:border-white/50">
+                    <SelectTrigger className="bg-white/20 border-white/30 text-white focus:bg-white/30 focus:border-white/50 text-sm">
                       <SelectValue placeholder="Selecciona tu rango de presupuesto" />
                     </SelectTrigger>
                     <SelectContent className="bg-white border-gray-200">
@@ -604,36 +644,36 @@ const Index = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2">
+                  <label className="block text-xs sm:text-sm font-medium text-white mb-1 sm:mb-2">
                     Cuéntanos sobre tu proyecto <span className="text-red-300">*</span>
                   </label>
                   <Textarea 
-                    className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50" 
-                    placeholder="Describe tu proyecto, objetivos, desafíos actuales y cómo podemos ayudarte..."
+                    className="bg-white/20 border-white/30 text-white placeholder-white/70 focus:bg-white/30 focus:border-white/50 text-sm" 
+                    placeholder="Describe tu proyecto, objetivos y cómo podemos ayudarte..."
                     rows={4}
                     required
                   />
                 </div>
 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-start space-x-2">
                   <input 
                     type="checkbox" 
                     id="acepto-terminos" 
-                    className="w-4 h-4 text-blue-600 bg-white/20 border-white/30 rounded focus:ring-blue-500"
+                    className="w-4 h-4 text-blue-600 bg-white/20 border-white/30 rounded focus:ring-blue-500 mt-0.5"
                     required
                   />
-                  <label htmlFor="acepto-terminos" className="text-sm text-white">
+                  <label htmlFor="acepto-terminos" className="text-xs sm:text-sm text-white leading-tight">
                     Acepto los <span className="underline cursor-pointer">términos y condiciones</span> y 
                     la <span className="underline cursor-pointer">política de privacidad</span>
                   </label>
                 </div>
 
-                <Button className="w-full bg-white text-blue-600 hover:bg-gray-100 font-semibold py-3 text-lg transition-all duration-300 hover:shadow-lg">
-                  <Mail className="mr-2 h-5 w-5" />
-                  Enviar Solicitud de Cotización
+                <Button className="w-full bg-white text-blue-600 hover:bg-gray-100 font-semibold py-2.5 sm:py-3 text-sm sm:text-base md:text-lg transition-all duration-300 hover:shadow-lg">
+                  <Mail className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                  Enviar Solicitud
                 </Button>
 
-                <div className="text-center text-white/80 text-sm">
+                <div className="text-center text-white/80 text-xs sm:text-sm">
                   <p>⚡ Respuesta garantizada en menos de 24 horas</p>
                 </div>
               </form>
@@ -643,39 +683,39 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-8 sm:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="col-span-2">
-              <div className="flex items-center space-x-3 mb-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            <div className="sm:col-span-2">
+              <div className="flex items-center space-x-2 sm:space-x-3 mb-3 sm:mb-4">
                 <img 
                   src="/lovable-uploads/ea99b6be-2edf-4756-8673-df1367dccf93.png" 
                   alt="DataWare360 Logo" 
-                  className="w-8 h-8"
+                  className="w-7 h-7 sm:w-8 sm:h-8"
                 />
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                   DataWare360
                 </h3>
               </div>
-              <p className="text-gray-400 mb-6">
-                Impulsamos la transformación digital de startups y pequeñas empresas con soluciones tecnológicas modulares e innovadoras.
+              <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-base">
+                Impulsamos la transformación digital de startups y pequeñas empresas con soluciones tecnológicas modulares.
               </p>
-              <div className="flex space-x-4">
-                <a href="https://www.instagram.com/data.ware360/" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
-                  <Instagram className="h-5 w-5" />
+              <div className="flex space-x-3 sm:space-x-4">
+                <a href="https://www.instagram.com/data.ware360/" className="p-1.5 sm:p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
+                  <Instagram className="h-4 w-4 sm:h-5 sm:w-5" />
                 </a>
-                <a href="https://www.linkedin.com/in/data-ware360-7a42b1370/" className="p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
-                  <Linkedin className="h-5 w-5" />
+                <a href="https://www.linkedin.com/in/data-ware360-7a42b1370/" className="p-1.5 sm:p-2 bg-gray-800 rounded-lg hover:bg-blue-600 transition-colors">
+                  <Linkedin className="h-4 w-4 sm:h-5 sm:w-5" />
                 </a>
-                <a href="https://www.tiktok.com/@dataware360" className="p-2 bg-gray-800 rounded-lg hover:bg-red-600 transition-colors">
-                  <Youtube className="h-5 w-5" />
+                <a href="https://www.tiktok.com/@dataware360" className="p-1.5 sm:p-2 bg-gray-800 rounded-lg hover:bg-red-600 transition-colors">
+                  <Youtube className="h-4 w-4 sm:h-5 sm:w-5" />
                 </a>
               </div>
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Servicios</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Servicios</h4>
+              <ul className="space-y-1.5 sm:space-y-2 text-gray-400 text-sm">
                 <li><a href="#servicios" className="hover:text-white transition-colors">Desarrollo de Software</a></li>
                 <li><a href="#servicios" className="hover:text-white transition-colors">Análisis de Datos</a></li>
                 <li><a href="#servicios" className="hover:text-white transition-colors">Consultoría Técnica</a></li>
@@ -683,8 +723,8 @@ const Index = () => {
             </div>
             
             <div>
-              <h4 className="font-semibold mb-4">Empresa</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Empresa</h4>
+              <ul className="space-y-1.5 sm:space-y-2 text-gray-400 text-sm">
                 <li><a href="#" className="hover:text-white transition-colors">Sobre Nosotros</a></li>
                 <li><a href="#blog" className="hover:text-white transition-colors">Blog</a></li>
                 <li><a href="#contacto" className="hover:text-white transition-colors">Contacto</a></li>
@@ -693,7 +733,7 @@ const Index = () => {
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-400 text-xs sm:text-sm">
             <p>&copy; 2025 DataWare360. Todos los derechos reservados.</p>
           </div>
         </div>
